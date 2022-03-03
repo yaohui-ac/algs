@@ -51,7 +51,6 @@ inline static int __partition(int arr[], int lo, int hi, int pivot) {
     return pivot;
 }
 inline static int partition(int arr[], int lo, int hi, int n, int k) {
-    if(hi < lo) return -114514;
     
     int mi = lo + rand() % (hi - lo + 1);
     int pivot = __partition(arr, lo, hi, mi);
@@ -60,7 +59,8 @@ inline static int partition(int arr[], int lo, int hi, int n, int k) {
     if(pivot > (n - k)) //下标在后面
         return partition(arr, lo, pivot, n, k);
     else
-        return partition(arr, pivot, hi, n, k);    
+        return partition(arr, pivot, hi, n, k);  
+    return 114514; //防 no-return      
 }
 
 int kth_3(int arr[], int n, int k) {
